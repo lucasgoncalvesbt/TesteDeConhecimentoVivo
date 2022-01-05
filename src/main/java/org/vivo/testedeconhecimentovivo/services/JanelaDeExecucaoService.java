@@ -14,11 +14,16 @@ public class JanelaDeExecucaoService {
         List<List<Integer>> resultado = new ArrayList<>();
 
 
-        List<Job> jobsFiltrado = jobs.stream().filter(job -> !(job.getDataMaximaConclusao().isAfter(dataInicio) || job.getDataMaximaConclusao().isEqual(dataInicio)) &&
-                !(job.getDataMaximaConclusao().isBefore(dataFim) || job.getDataMaximaConclusao().isEqual(dataFim))).collect(Collectors.toList());
+        List<Job> jobsFiltrado = jobs.stream().filter(job ->
+                        (job.getDataMaximaConclusao().isAfter(dataInicio) || job.getDataMaximaConclusao().isEqual(dataInicio)) &&
+                                (job.getDataMaximaConclusao().isBefore(dataFim) || job.getDataMaximaConclusao().isEqual(dataFim))
+                ).sorted((job1, job2) -> job1.getDataMaximaConclusao().compareTo(job2.getDataMaximaConclusao()))
+                .collect(Collectors.toList());
+
+        System.out.println(jobsFiltrado);
 
 
 
-        return resultado;
+        return null;
     }
 }
