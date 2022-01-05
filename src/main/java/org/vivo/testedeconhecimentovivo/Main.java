@@ -1,6 +1,7 @@
 package org.vivo.testedeconhecimentovivo;
 
 import org.vivo.testedeconhecimentovivo.models.Job;
+import org.vivo.testedeconhecimentovivo.services.JanelaDeExecucaoService;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -33,6 +34,12 @@ public class Main {
 
         LocalDateTime dataInicio = LocalDateTime.parse("2019-11-10 09:00:00", formatter);
         LocalDateTime dataFim = LocalDateTime.parse("2019-11-11 12:00:00", formatter);
+
+        JanelaDeExecucaoService janelaDeExecucaoService = new JanelaDeExecucaoService();
+
+        List<List<Integer>> listaDeExecucoes = janelaDeExecucaoService.execute(jobs, dataInicio, dataFim);
+
+        System.out.println(listaDeExecucoes);
 
     }
 
