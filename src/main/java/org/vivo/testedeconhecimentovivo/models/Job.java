@@ -70,4 +70,14 @@ public class Job {
         result = 31 * result + (tempoEstimadoEmHoras != null ? tempoEstimadoEmHoras.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Job{" +
+                "id=" + id +
+                ", descricao='" + descricao + '\'' +
+                ", dataMaximaConclusao=" + dataMaximaConclusao +
+                ", tempoEstimadoEmHoras=" + tempoEstimadoEmHoras +
+                '}';
+    }
 }
